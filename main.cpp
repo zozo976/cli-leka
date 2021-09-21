@@ -11,6 +11,148 @@ struct command_frame {
     unsigned checksum;
 /* Que ce soit la séquence de départ, la taille, chacun des éléments de command_groupe, ils sont sur 
 1 byte donc sur 8 bits. Typer les variables en char ou en unsigned permet de les avoir sur 8 bits elles aussi*/
+
+void createLedEarAll(std::vector<std::string> &command_args) {
+        if (command_args.size() < 4) {
+            std::cerr << "erreur: il n'y a pas assez d'aguments\n";
+            exit(1);
+        }
+        length = 4;
+        groupe_commandes.push_back(0x11);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+       // checksum = getBsdChecksum(length, groupe_commandes);
+    }
+void createLedEarSingle(std::vector<std::string> &command_args) {
+        if (command_args.size() < 5) {
+            std::cerr << "erreur: il n'y a pas assez d'aguments\n";
+            exit(1);
+        }
+        length = 5;
+        groupe_commandes.push_back(0x12);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+        groupe_commandes.push_back(std::stoi(command_args[4]));
+       // checksum = getBsdChecksum(length, groupe_commandes);
+    }
+void createLedBeltAll(std::vector<std::string> &command_args) {
+        if (command_args.size() < 4) {
+            std::cerr << "erreur: il n'y a pas assez d'aguments\n";
+            exit(1);
+        }
+        length = 4;
+        groupe_commandes.push_back(0x13);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+       // checksum = getBsdChecksum(length, groupe_commandes);
+    }
+void createLedBeltRange(std::vector<std::string> &command_args) {
+        if (command_args.size() < 6) {
+            std::cerr << "erreur: il n'y a pas assez d'aguments\n";
+            exit(1);
+        }
+        length = 6;
+        groupe_commandes.push_back(0x14);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+        groupe_commandes.push_back(std::stoi(command_args[4]));
+        groupe_commandes.push_back(std::stoi(command_args[5]));
+       // checksum = getBsdChecksum(length, groupe_commandes);
+    }
+
+    void createLedBeltSingle(std::vector<std::string> &command_args) {
+        if (command_args.size() < 5) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 5;
+        groupe_commandes.push_back(0x15);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+        groupe_commandes.push_back(std::stoi(command_args[4]));
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+
+    void createMotorAll(std::vector<std::string> &command_args) {
+        if (command_args.size() < 3) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 3;
+        groupe_commandes.push_back(0x21);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+      
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+void createMotorDuo(std::vector<std::string> &command_args) {
+        if (command_args.size() < 5) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 5;
+        groupe_commandes.push_back(0x22);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+        groupe_commandes.push_back(std::stoi(command_args[4]));
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+    void createMotorLeft(std::vector<std::string> &command_args) {
+        if (command_args.size() < 3) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 3;
+        groupe_commandes.push_back(0x23);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+      
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+
+    void createMotorRight(std::vector<std::string> &command_args) {
+        if (command_args.size() < 3) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 3;
+        groupe_commandes.push_back(0x24);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+        groupe_commandes.push_back(std::stoi(command_args[2]));
+        groupe_commandes.push_back(std::stoi(command_args[3]));
+        
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+    void createMotivateur(std::vector<std::string> &command_args) {
+        if (command_args.size() < 2) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 2;
+        groupe_commandes.push_back(0x50);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+      
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+    void createGuidance(std::vector<std::string> &command_args) {
+        if (command_args.size() < 2) {
+            std::cerr << "erreur: il n' ya pas assez d'arguments\n";
+            exit(1);
+        }
+        length = 2;
+        groupe_commandes.push_back(0x40);
+        groupe_commandes.push_back(std::stoi(command_args[1]));
+      
+        //checksum = getBsdChecksum(length, groupe_commandes);
+    }
+
+
     command_frame(std::vector<std::string> &command_args) {
 /* command_args est un tableau qui contient tous les argv à partir de argv[1]. Ainsi, command_args[0] = argv[1] 
 soit la commande principale. commande_arg[1] et ainsi de suite contient les arguments quand il y en a. */
@@ -59,157 +201,41 @@ soit la commande principale. commande_arg[1] et ainsi de suite contient les argu
 
 
         if (command_number == 4) {
-            if (command_args.size() < 4) {
-                std::cerr << "erreur: Il n'ya pas assez d'arguments\n";
-                exit(1);
-            }
-            length = 4;
-            // ici il y a la commande ainsi que les 3 arguments, ce qui fait une taille de 4 au total
-
-            groupe_commandes.push_back(0x11);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    // On a donc un groupe de commande qui contient l'id ainsi que les différents arguments. 
-            //checksum = checksum();
+           createLedEarAll(command_args);
         }
 	 if (command_number == 5) {
-            if (command_args.size() < 5) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 5;
-            groupe_commandes.push_back(0x12);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    groupe_commandes.push_back(std::stoi(command_args[4]));
-            
-		
-            //checksum = checksum();
+            createLedEarSingle(command_args);
         }
 
 	
 	 if (command_number == 6) {
-            if (command_args.size() < 4) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 4;
-            groupe_commandes.push_back(0x13);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    
-            //checksum = checksum();
+          createLedBeltAll(command_args);
         }
 
 
 	 if (command_number == 7) {
-            if (command_args.size() < 6) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 6;
-            groupe_commandes.push_back(0x14);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    groupe_commandes.push_back(std::stoi(command_args[4]));
-	    groupe_commandes.push_back(std::stoi(command_args[5]));
-	    
-            //checksum = checksum();
+            createLedBeltRange(command_args);
         }
 	 if (command_number == 8) {
-            if (command_args.size() < 5) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 5;
-            groupe_commandes.push_back(0x15);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    groupe_commandes.push_back(std::stoi(command_args[4]));
-	    
-            //checksum = checksum();
-        }
+            createLedBeltSingle(command_args);}
  if (command_number == 9) {
-            if (command_args.size() < 3) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 3;
-            groupe_commandes.push_back(0x21);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
             
-	    
-            //checksum = checksum();
+           createMotorAll(command_args);
         }
  if (command_number == 10) {
-            if (command_args.size() < 5) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 5;
-            groupe_commandes.push_back(0x22);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	    groupe_commandes.push_back(std::stoi(command_args[4]));
-	    
-            //checksum = checksum();
+           createMotorDuo(command_args);
         }
  if (command_number == 11) {
-            if (command_args.size() < 3) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 3;
-            groupe_commandes.push_back(0x23);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            
-	    
-            //checksum = checksum();
+          createMotorLeft(command_args);
         }
  if (command_number == 12) {
-            if (command_args.size() < 3) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 3;
-            groupe_commandes.push_back(0x24);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            groupe_commandes.push_back(std::stoi(command_args[2]));
-            groupe_commandes.push_back(std::stoi(command_args[3]));
-	   
-            //checksum = checksum();
+         createMotorRight(command_args);
         }
  if (command_number == 13) {
-            if (command_args.size() < 2) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 2;
-            groupe_commandes.push_back(0x50);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            
-            
-            //checksum = checksum();
+          createMotivateur(command_args);
         }
  if (command_number == 14) {
-            if (command_args.size() < 2) {
-                std::cerr << "erreur: il manque des arguments\n";
-                exit(1);
-            }
-            length = 2;
-            groupe_commandes.push_back(0x40);
-            groupe_commandes.push_back(std::stoi(command_args[1]));
-            
-            
-            //checksum = checksum();
+         createGuidance(command_args);
         }
     }
 
